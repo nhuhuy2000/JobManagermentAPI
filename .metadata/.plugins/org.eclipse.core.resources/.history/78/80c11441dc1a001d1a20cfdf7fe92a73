@@ -1,0 +1,39 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Job;
+import com.example.demo.error.ErrorResponse;
+import com.example.demo.service.JobService;
+
+@RestController
+@RequestMapping("/job")
+public class JobController {
+	
+	@Autowired
+	private JobService jobService;
+	@GetMapping("/list")
+	public ResponseEntity<List<Job>> listAll(){
+		return new ResponseEntity<List<Job>>(jobService.listAll(), HttpStatus.OK);
+	}
+	@PostMapping("/save")
+	public ResponseEntity<?> saveJob(@RequestBody Job job){
+		Job existJob = jobService.getJob(job.getId());
+		if(existJob != null) {
+			ErrorResponse error = new ErrorResponse();
+			error.setMessage("Job đã tồn tại!");
+			return new ResponseEntity<>(error.getMessage(), HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(jobService.saveJob(job), HttpStatus.ACCEPTED);
+	}
+	
+}

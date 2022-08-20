@@ -1,0 +1,26 @@
+
+“
+java:S14888"`Immediately return this expression instead of assigning it to the temporary variable "savedJob".(ÓÕÐé8ë‚à¯©0H¾RMINORZ
+CODE_SMELL
+Z
+java:S1125="'Remove the unnecessary boolean literal.(é½Àª8ÊíÈ±©0HÂRMINORZ
+CODE_SMELL
+‹
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ç‹ƒ8³‚×½©0HÄRMINORZ
+CODE_SMELL
+|
+java:S3655I"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ùð‰Ç8É•“µ©0HÁRMAJORZBUG
+|
+java:S3655?"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¦ôÒÚ8¡•é¯©0HÇRMAJORZBUG
+b
+java:S1128"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕ8»¶å¼ª0HðRMINORZ
+CODE_SMELL
+s	java:S125*"<This block of commented-out lines of code should be removed.(­íÁýûÿÿÿÿ8‘íá»ª0HäRMAJORZ
+CODE_SMELL
+|
+java:S36558"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÓÕÐé8ë‚à¯©0HÆRMAJORZBUG
+|
+java:S3655T"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ƒÁÈÑ8É•“µ©0HÈRMAJORZBUG
+
+java:S1488E"\Immediately return this expression instead of assigning it to the temporary variable "list".(ÀðªÆ8ÖÒ¬çª0HŠRMINORZ
+CODE_SMELL

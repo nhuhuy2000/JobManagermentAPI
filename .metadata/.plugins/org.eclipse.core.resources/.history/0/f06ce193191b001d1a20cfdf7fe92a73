@@ -1,0 +1,67 @@
+package com.example.demo.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Job;
+import com.example.demo.repository.JobRepository;
+
+@Service
+public class JobService {
+	
+	@Autowired
+	private JobRepository repository;
+	
+	public List<Job> listAll(String keyword, String jobType, String salary, String city,String sortDir){
+		int pageSize = repository.findAll().size();
+		if(pageSize == 0) {
+			return new ArrayList<Job>();
+		}
+		int pageNum = 0;
+		Sort sort = Sort.by("id");
+		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+		
+		Pageable pageable = PageRequest.of(pageNum, pageSize, sort);
+		
+		if(keyword != null && !keyword.isEmpty()) {
+//			return repository
+		}
+		return repository.findAll();
+	}
+	public Job saveJob(Job job) {
+		repository.save(job);
+		Job savedJob = repository.findById(job.getId()).get();
+		return savedJob;
+	}
+	public Job getJob(Integer jobId) {
+		boolean existJob = repository.existsJobById(jobId);
+		if(existJob == true) {
+			
+			return repository.findById(jobId).get();
+		}
+		else return null;
+	}
+	public void deleteJob(Integer id) {
+		 repository.deleteById(id);
+	}
+	public Job updateJob(Job job, Integer id) {
+		Job jobInDB = repository.findById(id).get();
+		jobInDB.setAmountOfPeople(job.getAmountOfPeople());
+		jobInDB.setCity(job.getCity());
+		jobInDB.setDescription(job.getDescription());
+		jobInDB.setEndDate(job.getEndDate());
+		jobInDB.setStartDate(job.getStartDate());
+		jobInDB.setJobName(job.getJobName());
+		jobInDB.setLogo(job.getLogo());
+		jobInDB.setSalary(job.getSalary());
+		jobInDB.setStatus(job.isStatus());
+		repository.save(jobInDB);
+		return repository.findById(id).get();
+	}
+}

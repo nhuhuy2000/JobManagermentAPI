@@ -1,0 +1,33 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Job;
+import com.example.demo.repository.JobRepository;
+
+@Service
+public class JobService {
+	
+	@Autowired
+	private JobRepository repository;
+	
+	public List<Job> listAll(){
+		return repository.findAll();
+	}
+	public Job saveJob(Job job) {
+		repository.save(job);
+		Job savedJob = repository.findById(job.getId()).get();
+		return savedJob;
+	}
+	public Job getJob(Integer jobId) {
+		boolean existJob = repository.existsJobById(jobId);
+		if(existJob == true) {
+			
+			return repository.findById(jobId).get();
+		}
+		else return null;
+	}
+}

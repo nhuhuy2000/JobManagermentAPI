@@ -1,0 +1,39 @@
+package com.example.demo.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name = "jobs")
+public class Job {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column(name="job_name", nullable = false)
+	private String jobName;
+	@Column(name="logo_company")
+	private String logo;
+	@Column(name="city", nullable = false, length = 256)
+	private String city;
+	@Column(name="job_type", nullable = false)
+	private String jobType;
+	@Column(name="start_date")
+	private Date startDate;
+	@Column(name="end_date")
+	private Date endDate;
+	@Column(name="salary", nullable = false)
+	private String salary;
+	@Column(nullable = false, length = 1024)
+	private String description;
+	@Column(name="amount_of_people", nullable = false)
+	private int amountOfPeople;
+	
+}

@@ -1,0 +1,123 @@
+package com.example.demo.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name = "jobs")
+public class Job {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column(name="job_name", nullable = false)
+	private String jobName;
+	@Column(name="logo_company")
+	private String logo;
+	@Column(name="city", nullable = false, length = 256)
+	private String city;
+	@Column(name="job_type", nullable = false)
+	private String jobType;
+	@Column(name="start_date")
+	private Date startDate;
+	@Column(name="end_date")
+	private Date endDate;
+	@Column(name="salary", nullable = false)
+	private String salary;
+	@Column(nullable = false, length = 1024)
+	private String description;
+	@Column(name="amount_of_people", nullable = false)
+	private int amountOfPeople;
+	@Column(name="status")
+	private boolean status;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getJobName() {
+		return jobName;
+	}
+	public void setJobName(String jobName) {
+		this.jobName = jobName;
+	}
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getJobType() {
+		return jobType;
+	}
+	public void setJobType(String jobType) {
+		this.jobType = jobType;
+	}
+	public Date getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	public String getSalary() {
+		return salary;
+	}
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public int getAmountOfPeople() {
+		return amountOfPeople;
+	}
+	public void setAmountOfPeople(int amountOfPeople) {
+		this.amountOfPeople = amountOfPeople;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	public Job(Integer id, String jobName, String logo, String city, String jobType, Date startDate, Date endDate,
+			String salary, String description, int amountOfPeople, boolean status) {
+		super();
+		this.id = id;
+		this.jobName = jobName;
+		this.logo = logo;
+		this.city = city;
+		this.jobType = jobType;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.salary = salary;
+		this.description = description;
+		this.amountOfPeople = amountOfPeople;
+		this.status = status;
+	}
+	
+	
+}
